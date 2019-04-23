@@ -2,9 +2,11 @@
   "name": "frontend-challenge",
   "version": "1.0.0",
   "description": "P'unk Avenue frontend node.js challenge",
-  "main": "app.js",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "NODE_ENV='development' webpack -w & nodemon server/server.js",
+    "start": "npm run start:dev"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,16 @@
   "bugs": {
     "url": "https://github.com/punkave/frontend-challenge/issues"
   },
-  "homepage": "https://github.com/punkave/frontend-challenge#readme"
+  "homepage": "https://github.com/punkave/frontend-challenge#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1"
+  }
 }

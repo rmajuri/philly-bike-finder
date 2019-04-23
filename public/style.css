@@ -1,0 +1,97 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(250, 252, 253);
+}
+
+.headerBar {
+  display: flex;
+  width: 100%;
+  margin-bottom: 25px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brandHeadingContainer {
+  padding: 15px 0 0 15px;
+}
+
+.brandName {
+  font-family: 'Amatic SC', cursive;
+  color: #25c3f7;
+  letter-spacing: 0.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.valueProposition {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #f75925;
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+}
+
+.weatherContainer {
+  padding: 15px 15px 0 0;
+  display: flex;
+}
+
+#degreesFahrenheit {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #25c3f7;
+}
+
+.mainContentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.inputContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  margin: 20px 0 10px 0;
+}
+
+.inputDialogue {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #f75925;
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+  margin-bottom: 10px;
+}
+
+.addressInput {
+  width: 40%;
+  padding: 7px 10px;
+  border: 1px solid #ccc;
+  background-color: white;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.addressInput:focus {
+  background-color: rgb(236, 244, 252);
+}
+
+.mapContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+#map {
+  height: 500px;
+  width: 800px;
+  margin-bottom: 30px;
+}

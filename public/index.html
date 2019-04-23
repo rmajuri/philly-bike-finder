@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Philly Bike Pulse</title>
+    <!-- <script src="jquery-3.3.1.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Josefin+Sans:300,300i,400,400i,600,600i,700"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="headerBar">
+      <div class="brandHeadingContainer">
+        <h1 class="brandName">Philly Bike Pulse</h1>
+        <h4 class="valueProposition">
+        Your reference for Philadelphia bike share station updates.
+        </h4>
+      </div>
+      <div class="weatherContainer">
+      <h2 id="degreesFahrenheit">70°F</h2>
+    </div>
+    </header>
+    <div class="mainContentContainer">
+      <div class="inputContainer">
+        <h2 class="inputDialogue">Where are you now?</h2>
+        <input class="addressInput" type="text" name="current-address" />
+      </div>
+      <div class="mapContainer">
+        <div id="map"></div>
+      </div>
+    </div>
+    <script src="./bundle.js"></script>
+    <script>
+      let map
+      function initMap() {
+        console.log('hey')
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: { lat: 39.952, lng: -75.165 },
+          zoom: 13,
+        })
+        console.log('cats')
+      }
+    </script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFrj1ZaSsqGSg4q3DbmORS9uQ0Bq46rRE&callback=initMap"
+    ></script>
+  </body>
+</html>
