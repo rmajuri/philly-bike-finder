@@ -38,6 +38,22 @@ body {
 .weatherContainer {
   padding: 15px 15px 0 0;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.currentWeatherContainer {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+}
+
+.currentWeather {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #f75925;
+  margin-right: 10px;
+  font-weight: 300;
+  letter-spacing: 0.2rem;
 }
 
 #degreesFahrenheit {
@@ -45,11 +61,54 @@ body {
   color: #25c3f7;
 }
 
+.fahrenheit {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #25c3f7;
+}
+
+#weatherDescription {
+  font-family: 'Josefin Sans', sans-serif;
+  text-transform: uppercase;
+  color: #25f7c2;
+  letter-spacing: 0.2rem;
+}
+
 .mainContentContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+#weatherWarning {
+  color: #f7255a;
+  font-family: 'Amatic SC', cursive;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  animation: 1s ease-out 0s 1 shake;
 }
 
 .inputContainer {
