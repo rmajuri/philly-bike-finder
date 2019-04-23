@@ -26,7 +26,6 @@ $(document).ready(function() {
       $('#weatherWarning').html(warning);
     }
 
-
     console.log(res)
   })
 })
