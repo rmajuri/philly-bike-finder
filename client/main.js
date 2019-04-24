@@ -28,8 +28,6 @@ $(document).ready(function() {
     if (warning) {
       $('#weatherWarning').html(warning);
     }
-
-
     console.log(res)
   })
 })

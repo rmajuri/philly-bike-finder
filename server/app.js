@@ -5,9 +5,8 @@ const bodyParser = require('body-parser')
 
 const app = express()
 
-
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json({ limit: '20mb' }))
+app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }))
 
 //This send requests to /weather-api to the weather-api.js file
 app.use('/weather-api', require('./weather-api'))

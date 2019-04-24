@@ -1,16 +1,22 @@
 require('dotenv').config()
 const router = require('express').Router()
 const axios = require('axios')
+const request = require('request-promise');
+
+const requestOptions = {
+  uri: process.env.INDEGO_API,
+  json: true
+};
 
 router.get('/', async (req, res, next) => {
   try {
     console.log('MADE IT TO INDEGO ROUTE')
-    const response = await axios.get('https://www.rideindego.com/stations/json')
-    console.log(response)
-    res.send(response)
+
+    const stationData = await request(requestOptions);
+    res.json(stationData)
   } catch (error) {
     next(error)
   }
-  });
+})
 
-  module.exports = router
+module.exports = router

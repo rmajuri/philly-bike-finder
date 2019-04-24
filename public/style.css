@@ -24,8 +24,9 @@ body {
   font-family: 'Amatic SC', cursive;
   color: #25c3f7;
   letter-spacing: 0.2rem;
-  font-weight: 600;
-  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 7px;
 }
 
 .valueProposition {
@@ -59,11 +60,13 @@ body {
 #degreesFahrenheit {
   font-family: 'Josefin Sans', sans-serif;
   color: #25c3f7;
+  letter-spacing: 0.1rem;
 }
 
 .fahrenheit {
   font-family: 'Josefin Sans', sans-serif;
   color: #25c3f7;
+  letter-spacing: 0.1rem;
 }
 
 #weatherDescription {
@@ -71,6 +74,7 @@ body {
   text-transform: uppercase;
   color: #25f7c2;
   letter-spacing: 0.2rem;
+  font-weight: 500;
 }
 
 .mainContentContainer {

@@ -22,8 +22,8 @@
       </div>
       <div class="weatherContainer">
         <div class="currentWeatherContainer">
-          <h2 class="currentWeather">Current Weather:</h2>
-          <h2 id="degreesFahrenheit"></h2>
+          <h3 class="currentWeather">Current Weather:</h3>
+          <h3 id="degreesFahrenheit"></h3>
           <span class="fahrenheit">°F</span>
         </div>
         <h4 id="weatherDescription"></h4>
@@ -45,12 +45,14 @@
     <script src="./bundle.js"></script>
     <script>
       let stationData
+
       $(document).ready(function() {
         $.getJSON(`/indego-api`, function(res) {
           stationData = res
           console.log(res)
         })
       })
+
       let map
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
