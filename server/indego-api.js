@@ -9,8 +9,6 @@ const requestOptions = {
 
 router.get('/', async (req, res, next) => {
   try {
-    console.log('MADE IT TO INDEGO ROUTE')
-
     const {features} = await request(requestOptions);
     res.json(features)
   } catch (error) {

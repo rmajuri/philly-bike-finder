@@ -46,6 +46,8 @@
     <script src="./bundle.js"></script>
     <script>
 
+      let markers = []
+
       let stationData
       $(document).ready(function() {
         $.getJSON(`/indego-api`, function(res) {
@@ -83,13 +85,38 @@
         })
       }
 
-      function logSubmission(event) {
+      function getDataForMarkers(closestStations) {
+        for (let i = 0; i < closestStations.length; i++) {
+          markers.push(new google.maps.Marker({
+            position: new google.maps.LatLng(closestStations[i].properties.latitude, closestStations[i].properties.longitude),
+            map: map
+          }))
+        }
+      }
+
+      function placeMarkersOnMap(phillyMap) {
+        for (let i = 0; i < markers.length; i++) {
+          markers[i].setMap(phillyMap)
+        }
+      }
+
+      function clearMarkers() {
+        placeMarkersOnMap(null)
+      }
+
+      function deleteMarkers() {
+        clearMarkers()
+        markers = []
+      }
+
+      function updateMap(event) {
         event.preventDefault()
+        deleteMarkers()
 
         const center = new google.maps.LatLng(39.952,-75.165); 
         const circle = new google.maps.Circle({
                 center: center,
-                radius: 50
+                radius: 20
         });
 
         const request = {
@@ -104,13 +131,17 @@
             const withDistances = getStationsWithDistanceFromInput(inputAddressCoords, stationData)
             const sortedAscending = sortDistancesAscending(withDistances)
             console.log('TRANSFORMED STATION DATA', sortedAscending)
+            console.log(results)
+            const closestFour = sortedAscending.slice(0, 4)
+            getDataForMarkers(closestFour)
+            placeMarkersOnMap(map)
           }
         })
 
       }
 
       const inputForm = document.getElementById("inputForm")
-      inputForm.addEventListener('submit', logSubmission)
+      inputForm.addEventListener('submit', updateMap)
 
     </script>
     <script
