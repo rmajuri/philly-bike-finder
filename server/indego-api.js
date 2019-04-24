@@ -1,6 +1,5 @@
 require('dotenv').config()
 const router = require('express').Router()
-const axios = require('axios')
 const request = require('request-promise');
 
 const requestOptions = {
