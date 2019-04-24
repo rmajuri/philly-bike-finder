@@ -124,6 +124,14 @@ body {
   margin: 20px 0 10px 0;
 }
 
+.serviceDescription {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #f75925;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  margin-bottom: 13px;
+}
+
 .inputDialogue {
   font-family: 'Josefin Sans', sans-serif;
   color: #f75925;

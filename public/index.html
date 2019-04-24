@@ -32,6 +32,7 @@
     <div class="mainContentContainer">
         <h1 id="weatherWarning"></h1>
       <div class="inputContainer">
+        <h2 class="serviceDescription">See a Snapshot of Philly Bike Stations Near You</h2>
         <h2 class="inputDialogue">Where are you now?</h2>
         <form id="inputForm">
         <input id="addressInput" type="text" name="current-address" />
@@ -44,26 +45,68 @@
     </div>
     <script src="./bundle.js"></script>
     <script>
-      let stationData
 
+      let stationData
       $(document).ready(function() {
         $.getJSON(`/indego-api`, function(res) {
           stationData = res
-          console.log(res)
+          console.log('ORIGINAL STATION DATA', stationData)
         })
       })
 
       let map
+      let service
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: { lat: 39.952, lng: -75.165 },
           zoom: 13,
         })
+        service = new google.maps.places.PlacesService(map)
+      }
+      
+      //input location coords will be results[0].geometry.location.lat() and results[0].geometry.location.lng()
+      function getStationsWithDistanceFromInput(userInputCoords, stations) {
+
+        const stationsWithDistanceFromAddress = stations.map(function(station) {
+          const stationCopy = Object.assign({}, station)
+          const distance = Math.sqrt(Math.pow(userInputCoords[0] - station.properties.latitude, 2) + Math.pow(userInputCoords[1] - station.properties.longitude, 2))
+          stationCopy.properties.distanceFromUserAddress = distance
+          return stationCopy
+        })
+
+        return stationsWithDistanceFromAddress
+      }
+
+      function sortDistancesAscending (stations) {
+        return stations.sort(function(a, b) {
+          return a.properties.distanceFromUserAddress - b.properties.distanceFromUserAddress
+        })
       }
 
       function logSubmission(event) {
-        console.log(event.target.firstElementChild.value)
         event.preventDefault()
+
+        const center = new google.maps.LatLng(39.952,-75.165); 
+        const circle = new google.maps.Circle({
+                center: center,
+                radius: 50
+        });
+
+        const request = {
+          query: event.target.firstElementChild.value,
+          fields: ['name', 'geometry'],
+          locationBias: circle.getBounds()
+        };
+
+        service.findPlaceFromQuery(request, function(results, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            const inputAddressCoords = [results[0].geometry.location.lat(), results[0].geometry.location.lng()]
+            const withDistances = getStationsWithDistanceFromInput(inputAddressCoords, stationData)
+            const sortedAscending = sortDistancesAscending(withDistances)
+            console.log('TRANSFORMED STATION DATA', sortedAscending)
+          }
+        })
+
       }
 
       const inputForm = document.getElementById("inputForm")
@@ -73,7 +116,7 @@
     <script
       async
       defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFrj1ZaSsqGSg4q3DbmORS9uQ0Bq46rRE&callback=initMap"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFrj1ZaSsqGSg4q3DbmORS9uQ0Bq46rRE&callback=initMap&libraries=places"
     ></script>
   </body>
 </html>

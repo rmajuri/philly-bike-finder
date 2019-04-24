@@ -11,8 +11,8 @@ router.get('/', async (req, res, next) => {
   try {
     console.log('MADE IT TO INDEGO ROUTE')
 
-    const stationData = await request(requestOptions);
-    res.json(stationData)
+    const {features} = await request(requestOptions);
+    res.json(features)
   } catch (error) {
     next(error)
   }
