@@ -22,8 +22,8 @@
       </div>
       <div class="weatherContainer">
         <div class="currentWeatherContainer">
-          <h2 class="currentWeather">Current Weather:</h2>
-          <h2 id="degreesFahrenheit"></h2>
+          <h3 class="currentWeather">Current Weather:</h3>
+          <h3 id="degreesFahrenheit"></h3>
           <span class="fahrenheit">°F</span>
         </div>
         <h4 id="weatherDescription"></h4>
@@ -33,7 +33,10 @@
         <h1 id="weatherWarning"></h1>
       <div class="inputContainer">
         <h2 class="inputDialogue">Where are you now?</h2>
-        <input class="addressInput" type="text" name="current-address" />
+        <form id="inputForm">
+        <input id="addressInput" type="text" name="current-address" />
+        <button class="addressSubmission type="submit">Submit</button>
+        </form>
       </div>
       <div class="mapContainer">
         <div id="map"></div>
@@ -41,15 +44,31 @@
     </div>
     <script src="./bundle.js"></script>
     <script>
+      let stationData
+
+      $(document).ready(function() {
+        $.getJSON(`/indego-api`, function(res) {
+          stationData = res
+          console.log(res)
+        })
+      })
+
       let map
       function initMap() {
-        console.log('hey')
         map = new google.maps.Map(document.getElementById('map'), {
           center: { lat: 39.952, lng: -75.165 },
           zoom: 13,
         })
-        console.log('cats')
       }
+
+      function logSubmission(event) {
+        console.log(event.target.firstElementChild.value)
+        event.preventDefault()
+      }
+
+      const inputForm = document.getElementById("inputForm")
+      inputForm.addEventListener('submit', logSubmission)
+
     </script>
     <script
       async

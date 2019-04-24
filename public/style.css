@@ -24,8 +24,9 @@ body {
   font-family: 'Amatic SC', cursive;
   color: #25c3f7;
   letter-spacing: 0.2rem;
-  font-weight: 600;
-  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 7px;
 }
 
 .valueProposition {
@@ -59,11 +60,13 @@ body {
 #degreesFahrenheit {
   font-family: 'Josefin Sans', sans-serif;
   color: #25c3f7;
+  letter-spacing: 0.1rem;
 }
 
 .fahrenheit {
   font-family: 'Josefin Sans', sans-serif;
   color: #25c3f7;
+  letter-spacing: 0.1rem;
 }
 
 #weatherDescription {
@@ -71,6 +74,7 @@ body {
   text-transform: uppercase;
   color: #25f7c2;
   letter-spacing: 0.2rem;
+  font-weight: 500;
 }
 
 .mainContentContainer {
@@ -128,18 +132,43 @@ body {
   margin-bottom: 10px;
 }
 
-.addressInput {
+#inputForm {
+  display: flex;
   width: 40%;
+  flex-direction: column;
+  align-items: center;
+}
+
+#addressInput {
+  width: 100%;
   padding: 7px 10px;
   border: 1px solid #ccc;
   background-color: white;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1rem;
   font-weight: 300;
+  margin-bottom: 10px;
 }
 
 .addressInput:focus {
   background-color: rgb(236, 244, 252);
+}
+
+.addressSubmission {
+  background-color: rgb(236, 244, 252);
+  color: #f75925;
+  font-family: 'Josefin Sans', sans-serif;
+  padding: 10px;
+  letter-spacing: 0.1rem;
+  border: 1px solid #ccc;
+  align-self: flex-end;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.addressSubmission:hover {
+  background-color: #25c3f7;
+  color: rgb(250, 252, 253);
 }
 
 .mapContainer {
