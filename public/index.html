@@ -45,27 +45,34 @@
     </div>
     <script src="./bundle.js"></script>
     <script>
-
-      let markers = []
-      let infoWindows = {}
-
-      let stationData
-      $(document).ready(function() {
-        $.getJSON(`/indego-api`, function(res) {
-          stationData = res
-          console.log('ORIGINAL STATION DATA', stationData)
-        })
-      })
-
       let map
       let service
+      let center
+      let circle
+
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: { lat: 39.952, lng: -75.165 },
           zoom: 13,
         })
+
         service = new google.maps.places.PlacesService(map)
+        center = new google.maps.LatLng(39.952,-75.165); 
+        circle = new google.maps.Circle({
+          center: center,
+          radius: 20
+        });
       }
+
+      $(document).ready(function() {
+        let markers = []
+        let infoWindows = {}
+        let stationData
+
+        $.getJSON(`/indego-api`, function(res) {
+          stationData = res
+          console.log('ORIGINAL STATION DATA', stationData)
+        })
       
       //input location coords will be results[0].geometry.location.lat() and results[0].geometry.location.lng()
       function getStationsWithDistanceFromInput(userInputCoords, stations) {
@@ -174,13 +181,8 @@
 
       function updateMap(event) {
         event.preventDefault()
-        deleteMarkers()
 
-        const center = new google.maps.LatLng(39.952,-75.165); 
-        const circle = new google.maps.Circle({
-                center: center,
-                radius: 20
-        });
+        deleteMarkers()
 
         const request = {
           query: event.target.firstElementChild.value,
@@ -207,7 +209,7 @@
 
       const inputForm = document.getElementById("inputForm")
       inputForm.addEventListener('submit', updateMap)
-
+    })
     </script>
     <script
       async
