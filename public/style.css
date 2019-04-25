@@ -191,3 +191,45 @@ body {
   width: 800px;
   margin-bottom: 30px;
 }
+
+#infoWindowContent {
+  padding: 12px;
+  background-color: aliceblue;
+}
+
+#stationAddress {
+  color: #f75925;
+  font-family: 'Josefin Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  margin-bottom: 5px;
+}
+
+#stationLocationName {
+  color: #25f7c2;
+  font-family: 'Josefin Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-weight: 900;
+  margin-bottom: 15px;
+}
+
+.infoBodyDetail {
+  margin-bottom: 7px;
+}
+
+.boldBodyDetail {
+  color: #25c3f7;
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 0.2rem;
+  margin-right: 5px;
+  font-weight: 700;
+}
+
+.lightBodyDetail {
+  color: #25c3f7;
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 0.2rem;
+  margin-right: 5px;
+  font-weight: 300;
+}

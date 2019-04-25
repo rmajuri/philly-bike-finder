@@ -32,8 +32,8 @@
     <div class="mainContentContainer">
         <h1 id="weatherWarning"></h1>
       <div class="inputContainer">
-        <h2 class="serviceDescription">See a Snapshot of Philly Bike Stations Near You</h2>
-        <h2 class="inputDialogue">Where are you now?</h2>
+        <h2 class="serviceDescription">Find available bikes and parking docks near you.</h2>
+        <h2 class="inputDialogue">Where are you?</h2>
         <form id="inputForm">
         <input id="addressInput" type="text" name="current-address" />
         <button class="addressSubmission type="submit">Submit</button>
@@ -47,6 +47,7 @@
     <script>
 
       let markers = []
+      let infoWindows = {}
 
       let stationData
       $(document).ready(function() {
@@ -93,11 +94,31 @@
             map: map
           })
 
+          infoWindows[`infoWindow${i}`] = new google.maps.InfoWindow({
+          content: createInfoWindowContentString(closestStations[i])
+          });
+
+          marker.addListener('click', function() {
+          infoWindows[`infoWindow${i}`].open(map, marker);
+          });
+
           markers.push(marker)
         }
       }
 
-      function createUserLocationMarker (userInputCoords) {
+      function createInfoWindowContentString(station) {
+        let contentString = `<div id='infoWindowContent'>` + 
+          `<h1 id='stationAddress'>${station.properties.addressStreet}</h1>` +
+          `<h4 id='stationLocationName'>${station.properties.name}</h4>` +
+          `<div id='infoWindowBody'>` +
+          `<p class='infoBodyDetail'><span class='boldBodyDetail'>Bikes available:</span><span class='lightBodyDetail'>${station.properties.bikesAvailable}</span></p>` +
+          `<p class='infoBodyDetail'><span class='boldBodyDetail'>Parking Docks Available:</span><span class='lightBodyDetail'>${station.properties.docksAvailable}</span></p>` +
+          `</div>` +
+          `</div>`
+        return contentString
+      } 
+
+      function createUserLocationMarker (userInputCoords, userLocationInfo) {
         const image = {
           url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
           size: new google.maps.Size(20, 32),
@@ -113,10 +134,27 @@
           map: map,
           icon: image,
           shape: shape,
-          zIndex: 2
+          zIndex: 10
         })
+
+        infoWindows.userInfoWindow = new google.maps.InfoWindow({
+          content: createUserLocationInfoWindowContentString(userLocationInfo)
+          });
+
+        userLocationMarker.addListener('click', function() {
+          infoWindows.userInfoWindow.open(map, userLocationMarker);
+        });
+
         markers.push(userLocationMarker)
       }
+
+      function createUserLocationInfoWindowContentString(userLocationInfo) {
+        let contentString = `<div id='infoWindowContent'>` + 
+          `<h3 id='stationAddress'>You are here.</h3>` +
+          `<h4 id='stationLocationName'>${userLocationInfo.name}</h4>` +
+          `</div>`
+        return contentString
+      } 
 
       function placeMarkersOnMap(phillyMap) {
         for (let i = 0; i < markers.length; i++) {
@@ -131,6 +169,7 @@
       function deleteMarkers() {
         clearMarkers()
         markers = []
+        infoWindows = {}
       }
 
       function updateMap(event) {
@@ -157,7 +196,7 @@
             console.log('TRANSFORMED STATION DATA', sortedAscending)
             console.log(results)
             const closestFour = sortedAscending.slice(0, 4)
-            createUserLocationMarker(inputAddressCoords)
+            createUserLocationMarker(inputAddressCoords, results[0])
             getDataForMarkers(closestFour)
             placeMarkersOnMap(map)
             map.setCenter(results[0].geometry.location)
