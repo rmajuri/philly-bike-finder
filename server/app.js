@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: false }))
 //This send requests to /weather-api to the weather-api.js file
 app.use('/weather-api', require('./weather-api'))
 app.use('/indego-api', require('./indego-api'))
+app.use('/assets', require('./assets'))
 
 //This serves up the static files
 app.use(express.static(path.join(__dirname, '..', 'public')))

@@ -86,12 +86,36 @@
       }
 
       function getDataForMarkers(closestStations) {
+
         for (let i = 0; i < closestStations.length; i++) {
-          markers.push(new google.maps.Marker({
+          let marker = new google.maps.Marker({
             position: new google.maps.LatLng(closestStations[i].properties.latitude, closestStations[i].properties.longitude),
             map: map
-          }))
+          })
+
+          markers.push(marker)
         }
+      }
+
+      function createUserLocationMarker (userInputCoords) {
+        const image = {
+          url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          size: new google.maps.Size(20, 32),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(0, 32)
+        };
+        const shape = {
+          coords: [1, 1, 1, 20, 18, 20, 18, 1],
+          type: 'poly'
+        };
+        const userLocationMarker = new google.maps.Marker({
+          position: new google.maps.LatLng(userInputCoords[0], userInputCoords[1]),
+          map: map,
+          icon: image,
+          shape: shape,
+          zIndex: 2
+        })
+        markers.push(userLocationMarker)
       }
 
       function placeMarkersOnMap(phillyMap) {
@@ -133,8 +157,10 @@
             console.log('TRANSFORMED STATION DATA', sortedAscending)
             console.log(results)
             const closestFour = sortedAscending.slice(0, 4)
+            createUserLocationMarker(inputAddressCoords)
             getDataForMarkers(closestFour)
             placeMarkersOnMap(map)
+            map.setCenter(results[0].geometry.location)
           }
         })
 
