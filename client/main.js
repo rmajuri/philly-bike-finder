@@ -2,10 +2,6 @@ $(document).ready(function() {
   let markers = []
   let infoWindows = {}
   let stationData
-  const inputForm = document.getElementById('inputForm')
-
-  //Update map takes in user input and changes map based on the lat/long coordinates of user location.
-  inputForm.addEventListener('submit', updateMap)
 
   //handle weather data
   $.getJSON(`/weather-api`, function(res) {
@@ -31,16 +27,16 @@ $(document).ready(function() {
       }
 
       if (warningMessage) {
-        weatherWarning.html(warningMessage)
+        weatherWarning.text(warningMessage)
       }
     }
 
     //Display weather info in header.
     function setWeatherInfo(temperature, description) {
-      const temperatureComponent = $('#degreesFahrenheit')
-      const weatherDescriptionComponent = $('#weatherDescription')
-      temperatureComponent.html(temperature)
-      weatherDescriptionComponent.html(description)
+      const $temperatureComponent = $('#degreesFahrenheit')
+      const $weatherDescriptionComponent = $('#weatherDescription')
+      $temperatureComponent.text(temperature)
+      $weatherDescriptionComponent.text(description)
     }
 
     determineWeatherWarning(temperatureData, windSpeedData)
@@ -111,10 +107,10 @@ $(document).ready(function() {
       `<h1 id='stationAddress'>${station.properties.addressStreet}</h1>` +
       `<h4 id='stationLocationName'>${station.properties.name}</h4>` +
       `<div id='infoWindowBody'>` +
-      `<p class='infoBodyDetail'><span class='boldBodyDetail'>Bikes available:</span><span class='lightBodyDetail'>${
+      `<p class='infoBodyDetail'><span class='boldInfoBodyDetail'>Bikes available:</span><span class='lightInfoBodyDetail'>${
         station.properties.bikesAvailable
       }</span></p>` +
-      `<p class='infoBodyDetail'><span class='boldBodyDetail'>Parking Docks Available:</span><span class='lightBodyDetail'>${
+      `<p class='infoBodyDetail'><span class='boldInfoBodyDetail'>Parking Docks Available:</span><span class='lightInfoBodyDetail'>${
         station.properties.docksAvailable
       }</span></p>` +
       `</div>` +
@@ -206,6 +202,7 @@ $(document).ready(function() {
         console.log(results)
         //Takes first four stations from array of ascending distance-from-user values.
         const closestFour = sortedAscending.slice(0, 4)
+        createMapInfoColumn(closestFour)
         createUserLocationMarker(inputAddressCoords, results[0])
         getDataForMarkers(closestFour)
         placeMarkersOnMap(map)
@@ -213,4 +210,44 @@ $(document).ready(function() {
       }
     })
   }
+
+  function createMapInfoColumn(stations) {
+    for (let i = 0; i < stations.length; i++) {
+      createStationInfoBlock(stations[i], i)
+    }
+  }
+
+  function createStationInfoBlock(station, stationNum) {
+    const stationInfoBlock = `<div class='stationInfoBlock'>
+      <h3>${station.properties.name}</h3>
+      <h6>${station.properties.addressStreet}</h6>
+      <h5><span>Bikes available:</span>${station.properties.bikesAvailable}</h5>
+      <h5><span>Parking docks available:</span>${station.properties.docksAvailable}</h5>
+      <h5 class='inactive extraInfo${stationNum}'><span>Classic bikes available:</span>${station.properties.classicBikesAvailable}</h5>
+      <h5 class='inactive extraInfo${stationNum}'><span>Smart bikes available:</span>${station.properties.smartBikesAvailable}</h5>
+      <h5 class='inactive extraInfo${stationNum}'><span>Electric bikes available:</span>${station.properties.electricBikesAvailable}</h5>
+      <h5 class='inactive extraInfo${stationNum}'><span>Trikes available:</span>${station.properties.trikesAvailable}</h5>
+      <p class='expandInfo${stationNum}'>See More</p>
+    </div>`
+
+    $(`expandInfo${stationNum}`).click(function() {
+      handleExpansionButtonClick(stationNum)
+    })
+    $('#mapInfoColumn').append(stationInfoBlock)
+  }
+
+  function handleExpansionButtonClick(stationNum) {
+    if ($(`extraInfo${stationNum}`).hasClass('inactive')) {
+      $(`extraInfo${stationNum}`).removeClass('inactive')
+      $(`expandInfo${stationNum}`).text('See Less')
+    } else {
+      $(`extraInfo${stationNum}`).addClass('inactive')
+      $(`expandInfo${stationNum}`).text('See More')
+    }
+  }
+
+
+  const $inputForm = $('#inputForm')
+  //Update map takes in user input and changes map based on the lat/long coordinates of user location.
+  $inputForm.on('submit', updateMap)
 })
