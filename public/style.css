@@ -166,6 +166,7 @@ body {
 
 #addressInput:focus {
   background-color: rgb(236, 244, 252);
+  outline: none !important;
 }
 
 .addressSubmission {
@@ -183,6 +184,14 @@ body {
 .addressSubmission:hover {
   background-color: #25c3f7;
   color: rgb(250, 252, 253);
+}
+
+.addressSubmission:focus {
+  outline: none !important;
+}
+
+.addressSubmission:active {
+  background-color: #eee;
 }
 
 /* MAP SECTION OF BODY. INCLUDES GOOGLE MAP AND INFORMATIONAL SCROLL WINDOW */
@@ -224,23 +233,33 @@ body {
 }
 
 .stationInfoBlock:hover {
-  background-color: rgb(243, 245, 247);
+  background-color: rgb(247, 247, 247);
 }
 
 .stationInfoBlock h3 {
   color:  #f75925;
+  display: inline;
   font-family: 'Josefin Sans', sans-serif;
   letter-spacing: 0.2rem;
-  margin-bottom: 10px;
   font-weight: 500;
   text-transform: uppercase;
+  cursor: default;
+  line-height: 1.5rem;
+}
+
+.stationInfoBlock h3:hover {
+  color: #25f7c2;
+}
+
+.stationInfoBlock h3:active {
+  color: #ccc;
 }
 
 .stationInfoBlock h6 {
   color:  #f75925;
   font-family: 'Josefin Sans', sans-serif;
   letter-spacing: 0.2rem;
-  margin-bottom: 15px;
+  margin: 15px 0;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -249,7 +268,7 @@ body {
   color:  #25c3f7;
   font-family: 'Josefin Sans', sans-serif;
   letter-spacing: 0.2rem;
-  margin-top: 8px;
+  margin: 8px 0;
   font-weight: 300;
 }
 
@@ -260,17 +279,25 @@ body {
 
 .stationInfoBlock p {
   text-decoration: underline;
-  color: #25f7c2;
+  color: #f75925;
   font-family: 'Josefin Sans', sans-serif;
   letter-spacing: 0.1rem;
   font-weight: 400;
   font-size: 0.75rem;
-  margin-top: 15px;
   cursor: default;
+  text-transform: uppercase;
 }
 
 .stationInfoBlock p:hover {
-  color: rgb(136, 135, 135);
+  color: #25f7c2;
+}
+
+.stationInfoBlock p:active {
+  color: #ccc;
+}
+
+.expandButton {
+  display: inline;
 }
 
 .inactive {

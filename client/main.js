@@ -115,7 +115,7 @@ $(document).ready(function() {
     let contentString =
       `<div id='infoWindowContent'>` +
       `<h1 id='stationAddress'>${station.properties.name}</h1>` +
-      `<h4 id='stationLocationName'>${station.properties.addressStreet}</h4>` +
+      `<h3 id='stationLocationName'>${station.properties.addressStreet}</h3>` +
       `<div id='infoWindowBody'>` +
       `<p class='infoBodyDetail'><span class='boldInfoBodyDetail'>Bikes available:</span><span class='lightInfoBodyDetail'>${
         station.properties.bikesAvailable
@@ -146,7 +146,7 @@ $(document).ready(function() {
       map: map,
       icon: image,
       shape: shape,
-      zIndex: 10,
+      zIndex: 100,
     })
 
     infoWindows.userInfoWindow = new google.maps.InfoWindow({
@@ -201,7 +201,7 @@ $(document).ready(function() {
     //Appends a station info block to the scroll window
     function createStationInfoBlock(station, stationNum) {
       const stationInfoBlock = `<div class='stationInfoBlock block${stationNum}'>
-        <h3>${station.properties.name}</h3>
+        <h3 class='infoBlockName${stationNum}'>${station.properties.name}</h3>
         <h6>${station.properties.addressStreet}</h6>
         <h5><span>Bikes available:</span>${station.properties.bikesAvailable}</h5>
         <h5><span>Parking docks available:</span>${station.properties.docksAvailable}</h5>
@@ -209,10 +209,10 @@ $(document).ready(function() {
         <h5 class='inactive extraInfo${stationNum}'><span>Smart bikes available:</span>${station.properties.smartBikesAvailable}</h5>
         <h5 class='inactive extraInfo${stationNum}'><span>Electric bikes available:</span>${station.properties.electricBikesAvailable}</h5>
         <h5 class='inactive extraInfo${stationNum}'><span>Trikes available:</span>${station.properties.trikesAvailable}</h5>
-        <p class='expandInfo${stationNum}'>See More</p>
+        <p class='expandButton expandInfo${stationNum}'>See More</p>
       </div>`
       $('#mapInfoColumn').append(stationInfoBlock)
-      $('#mapInfoColumn').on('click', `.block${stationNum}`, function() {
+      $('#mapInfoColumn').on('click', `.infoBlockName${stationNum}`, function() {
         centerMapAndZoomOnSelectedStation([station.properties.latitude, station.properties.longitude])
       })
       $(`.block${stationNum}`).on('click', `.expandInfo${stationNum}`, function() {
@@ -239,7 +239,6 @@ $(document).ready(function() {
       map.setZoom(19)
     }
 
-
   //fires when user input submitted
   function updateMap(event) {
     event.preventDefault()
@@ -264,7 +263,7 @@ $(document).ready(function() {
         )
         const sortedAscending = sortDistancesAscending(withDistances)
         console.log('TRANSFORMED STATION DATA', sortedAscending)
-        console.log(results)
+        console.log(results[0].geometry.location.lat(), results[0].geometry.location.lng())
         //Takes first four stations from array of ascending distance-from-user values.
         const closestFour = sortedAscending.slice(0, 4)
         emptyStationInfoColumn()
