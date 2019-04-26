@@ -186,6 +186,60 @@ $(document).ready(function() {
     infoWindows = {}
   }
 
+    //Places info blocks within scroll window
+    function createMapInfoColumn(stations) {
+      for (let i = 0; i < stations.length; i++) {
+        createStationInfoBlock(stations[i], i)
+      }
+    }
+
+    //clears scroll window before repopulating
+    function emptyStationInfoColumn() {
+      $(`#mapInfoColumn`).empty()
+    }
+
+    //Appends a station info block to the scroll window
+    function createStationInfoBlock(station, stationNum) {
+      const stationInfoBlock = `<div class='stationInfoBlock block${stationNum}'>
+        <h3>${station.properties.name}</h3>
+        <h6>${station.properties.addressStreet}</h6>
+        <h5><span>Bikes available:</span>${station.properties.bikesAvailable}</h5>
+        <h5><span>Parking docks available:</span>${station.properties.docksAvailable}</h5>
+        <h5 class='inactive extraInfo${stationNum}'><span>Classic bikes available:</span>${station.properties.classicBikesAvailable}</h5>
+        <h5 class='inactive extraInfo${stationNum}'><span>Smart bikes available:</span>${station.properties.smartBikesAvailable}</h5>
+        <h5 class='inactive extraInfo${stationNum}'><span>Electric bikes available:</span>${station.properties.electricBikesAvailable}</h5>
+        <h5 class='inactive extraInfo${stationNum}'><span>Trikes available:</span>${station.properties.trikesAvailable}</h5>
+        <p class='expandInfo${stationNum}'>See More</p>
+      </div>`
+      $('#mapInfoColumn').append(stationInfoBlock)
+      $('#mapInfoColumn').on('click', `.block${stationNum}`, function() {
+        centerMapAndZoomOnSelectedStation([station.properties.latitude, station.properties.longitude])
+      })
+      $(`.block${stationNum}`).on('click', `.expandInfo${stationNum}`, function() {
+        // const num = stationNum
+        handleExpansionButtonClick(stationNum)
+      })
+    }
+
+    //fires when 'See Less' and 'See More' buttons on info block are clicked
+    function handleExpansionButtonClick(stationNum) {
+      console.log('hey')
+      if ($(`.extraInfo${stationNum}`).hasClass('inactive')) {
+        $(`.extraInfo${stationNum}`).removeClass('inactive')
+        $(`.expandInfo${stationNum}`).text('See Less')
+      } else {
+        $(`.extraInfo${stationNum}`).addClass('inactive')
+        $(`.expandInfo${stationNum}`).text('See More')
+      }
+    }
+
+    function centerMapAndZoomOnSelectedStation(latLongCoordinates) {
+      const latLng = new google.maps.LatLng(latLongCoordinates[0], latLongCoordinates[1]);
+      map.setCenter(latLng)
+      map.setZoom(19)
+    }
+
+
   //fires when user input submitted
   function updateMap(event) {
     event.preventDefault()
@@ -219,54 +273,10 @@ $(document).ready(function() {
         createStationMarkers(closestFour)
         placeMarkersOnMap(map)
         map.setCenter(results[0].geometry.location)
+        map.setZoom(13)
       }
     })
   }
-
-  //Places info blocks within scroll window
-  function createMapInfoColumn(stations) {
-    for (let i = 0; i < stations.length; i++) {
-      createStationInfoBlock(stations[i], i)
-    }
-  }
-
-  //clears scroll window before repopulating
-  function emptyStationInfoColumn() {
-    $(`#mapInfoColumn`).empty()
-  }
-
-  //Appends a station info block to the scroll window
-  function createStationInfoBlock(station, stationNum) {
-    const stationInfoBlock = `<div class='stationInfoBlock block${stationNum}'>
-      <h3>${station.properties.name}</h3>
-      <h6>${station.properties.addressStreet}</h6>
-      <h5><span>Bikes available:</span>${station.properties.bikesAvailable}</h5>
-      <h5><span>Parking docks available:</span>${station.properties.docksAvailable}</h5>
-      <h5 class='inactive extraInfo${stationNum}'><span>Classic bikes available:</span>${station.properties.classicBikesAvailable}</h5>
-      <h5 class='inactive extraInfo${stationNum}'><span>Smart bikes available:</span>${station.properties.smartBikesAvailable}</h5>
-      <h5 class='inactive extraInfo${stationNum}'><span>Electric bikes available:</span>${station.properties.electricBikesAvailable}</h5>
-      <h5 class='inactive extraInfo${stationNum}'><span>Trikes available:</span>${station.properties.trikesAvailable}</h5>
-      <p class='expandInfo${stationNum}'>See More</p>
-    </div>`
-    $('#mapInfoColumn').append(stationInfoBlock)
-    $(`.block${stationNum}`).on('click', `.expandInfo${stationNum}`, function() {
-      const num = stationNum
-      handleExpansionButtonClick(num)
-    })
-  }
-
-  //fires when 'See Less' and 'See More' buttons on info block are clicked
-  function handleExpansionButtonClick(stationNum) {
-    console.log('hey')
-    if ($(`.extraInfo${stationNum}`).hasClass('inactive')) {
-      $(`.extraInfo${stationNum}`).removeClass('inactive')
-      $(`.expandInfo${stationNum}`).text('See Less')
-    } else {
-      $(`.extraInfo${stationNum}`).addClass('inactive')
-      $(`.expandInfo${stationNum}`).text('See More')
-    }
-  }
-
 
   const $inputForm = $('#inputForm')
   //Update map takes in user input and changes map based on the lat/long coordinates of user location.
