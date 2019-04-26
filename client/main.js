@@ -45,10 +45,23 @@ $(document).ready(function() {
     console.log(res)
   })
 
-  $.getJSON(`/indego-api`, function(res) {
+  $.getJSON(`/indego-api`, async function(res) {
     stationData = res
     console.log('ORIGINAL STATION DATA', stationData)
+
+    function populateMapInitially() {
+      createStationMarkers(stationData)
+      placeMarkersOnMap(map)
+      createMapInfoColumn(stationData)
+    }
+
+    populateMapInitially()
+
   })
+
+
+  // console.log('FEATURES', stationData.features)
+
 
   //take in user's location coords and finds the distance between user and all stations. Stores this distance
   //in a copy of station object that now includes distanceFromUserAddress property
@@ -78,7 +91,7 @@ $(document).ready(function() {
   }
 
   //create the bike station markers that will be placed on the map
-  function getDataForMarkers(closestStations) {
+  function createStationMarkers(closestStations) {
     for (let i = 0; i < closestStations.length; i++) {
       let marker = new google.maps.Marker({
         position: new google.maps.LatLng(
@@ -205,7 +218,7 @@ $(document).ready(function() {
         emptyStationInfoColumn()
         createMapInfoColumn(closestFour)
         createUserLocationMarker(inputAddressCoords, results[0])
-        getDataForMarkers(closestFour)
+        createStationMarkers(closestFour)
         placeMarkersOnMap(map)
         map.setCenter(results[0].geometry.location)
       }
