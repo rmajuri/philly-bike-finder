@@ -104,8 +104,8 @@ $(document).ready(function() {
   function createInfoWindowContentString(station) {
     let contentString =
       `<div id='infoWindowContent'>` +
-      `<h1 id='stationAddress'>${station.properties.addressStreet}</h1>` +
-      `<h4 id='stationLocationName'>${station.properties.name}</h4>` +
+      `<h1 id='stationAddress'>${station.properties.name}</h1>` +
+      `<h4 id='stationLocationName'>${station.properties.addressStreet}</h4>` +
       `<div id='infoWindowBody'>` +
       `<p class='infoBodyDetail'><span class='boldInfoBodyDetail'>Bikes available:</span><span class='lightInfoBodyDetail'>${
         station.properties.bikesAvailable
@@ -218,7 +218,7 @@ $(document).ready(function() {
   }
 
   function createStationInfoBlock(station, stationNum) {
-    const stationInfoBlock = `<div class='stationInfoBlock'>
+    const stationInfoBlock = `<div class='stationInfoBlock block${stationNum}'>
       <h3>${station.properties.name}</h3>
       <h6>${station.properties.addressStreet}</h6>
       <h5><span>Bikes available:</span>${station.properties.bikesAvailable}</h5>
@@ -229,20 +229,21 @@ $(document).ready(function() {
       <h5 class='inactive extraInfo${stationNum}'><span>Trikes available:</span>${station.properties.trikesAvailable}</h5>
       <p class='expandInfo${stationNum}'>See More</p>
     </div>`
-
-    $(`expandInfo${stationNum}`).click(function() {
-      handleExpansionButtonClick(stationNum)
-    })
     $('#mapInfoColumn').append(stationInfoBlock)
+    $(document).on('click', `.expandInfo${stationNum}`, function() {
+      const num = stationNum
+      handleExpansionButtonClick(num)
+    })
   }
 
   function handleExpansionButtonClick(stationNum) {
-    if ($(`extraInfo${stationNum}`).hasClass('inactive')) {
-      $(`extraInfo${stationNum}`).removeClass('inactive')
-      $(`expandInfo${stationNum}`).text('See Less')
+    console.log('hey')
+    if ($(`.extraInfo${stationNum}`).hasClass('inactive')) {
+      $(`.extraInfo${stationNum}`).removeClass('inactive')
+      $(`.expandInfo${stationNum}`).text('See Less')
     } else {
-      $(`extraInfo${stationNum}`).addClass('inactive')
-      $(`expandInfo${stationNum}`).text('See More')
+      $(`.extraInfo${stationNum}`).addClass('inactive')
+      $(`.expandInfo${stationNum}`).text('See More')
     }
   }
 

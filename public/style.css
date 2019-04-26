@@ -224,6 +224,10 @@ body {
   padding: 10px 7px;
 }
 
+.stationInfoBlock:hover {
+  background-color: rgb(243, 245, 247);
+}
+
 .stationInfoBlock h3 {
   color:  #f75925;
   font-family: 'Josefin Sans', sans-serif;
@@ -234,10 +238,10 @@ body {
 }
 
 .stationInfoBlock h6 {
-  color:  #25f7c2;
+  color:  #f75925;
   font-family: 'Josefin Sans', sans-serif;
   letter-spacing: 0.2rem;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -251,7 +255,7 @@ body {
 }
 
 .stationInfoBlock h5 span {
-  font-weight: 700;
+  font-weight: 600;
   margin-right: 5px;
 }
 
@@ -262,12 +266,12 @@ body {
   letter-spacing: 0.1rem;
   font-weight: 400;
   font-size: 0.75rem;
-  margin-top: 12px;
+  margin-top: 15px;
   cursor: default;
 }
 
 .stationInfoBlock p:hover {
-  color: #ccc;
+  color: rgb(136, 135, 135);
 }
 
 .inactive {
@@ -284,7 +288,7 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 #stationLocationName {
