@@ -45,10 +45,11 @@ $(document).ready(function() {
     console.log(res)
   })
 
-  $.getJSON(`/indego-api`, async function(res) {
+  $.getJSON(`/indego-api`, function(res) {
     stationData = res
     console.log('ORIGINAL STATION DATA', stationData)
 
+    //Display all stations on map and in scroll window
     function populateMapInitially() {
       createStationMarkers(stationData)
       placeMarkersOnMap(map)
@@ -58,10 +59,6 @@ $(document).ready(function() {
     populateMapInitially()
 
   })
-
-
-  // console.log('FEATURES', stationData.features)
-
 
   //take in user's location coords and finds the distance between user and all stations. Stores this distance
   //in a copy of station object that now includes distanceFromUserAddress property
@@ -189,6 +186,7 @@ $(document).ready(function() {
     infoWindows = {}
   }
 
+  //fires when user input submitted
   function updateMap(event) {
     event.preventDefault()
 
@@ -225,16 +223,19 @@ $(document).ready(function() {
     })
   }
 
+  //Places info blocks within scroll window
   function createMapInfoColumn(stations) {
     for (let i = 0; i < stations.length; i++) {
       createStationInfoBlock(stations[i], i)
     }
   }
 
+  //clears scroll window before repopulating
   function emptyStationInfoColumn() {
     $(`#mapInfoColumn`).empty()
   }
 
+  //Appends a station info block to the scroll window
   function createStationInfoBlock(station, stationNum) {
     const stationInfoBlock = `<div class='stationInfoBlock block${stationNum}'>
       <h3>${station.properties.name}</h3>
@@ -254,6 +255,7 @@ $(document).ready(function() {
     })
   }
 
+  //fires when 'See Less' and 'See More' buttons on info block are clicked
   function handleExpansionButtonClick(stationNum) {
     console.log('hey')
     if ($(`.extraInfo${stationNum}`).hasClass('inactive')) {

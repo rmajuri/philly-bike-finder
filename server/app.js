@@ -7,6 +7,7 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
+//Routes to third-party APIs
 app.use('/weather-api', require('./weather-api'))
 app.use('/indego-api', require('./indego-api'))
 

@@ -8,6 +8,8 @@ body {
   background-color: rgb(250, 252, 253);
 }
 
+/* HEADER BAR STYLES */
+
 .headerBar {
   display: flex;
   width: 100%;
@@ -77,12 +79,16 @@ body {
   font-weight: 500;
 }
 
+/* MAIN BODY CONTENT STYLES*/
+
 .mainContentContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
 }
+
+/* SHAKE ANIMATION FOR WHEN DANGEROUS WEATHER WARNING APPEARS */
 
 @keyframes shake {
   10%,
@@ -179,12 +185,7 @@ body {
   color: rgb(250, 252, 253);
 }
 
-/* .mapInfoContainer {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-} */
+/* MAP SECTION OF BODY. INCLUDES GOOGLE MAP AND INFORMATIONAL SCROLL WINDOW */
 
 .mapInfoContainer {
   display: flex;
@@ -193,17 +194,13 @@ body {
   margin-top: 20px;
 }
 
-/* #map {
-  height: 500px;
-  width: 800px;
-  margin-bottom: 30px;
-} */
-
 #map {
   height: 500px;
   width: 600px;
   margin-bottom: 30px;
 }
+
+/* INFORMATIONAL SCROLL WINDOW */
 
 #mapInfoColumn {
   display: flex;
@@ -279,6 +276,8 @@ body {
 .inactive {
   display: none;
 }
+
+/* INFO WINDOW FOR EACH MAP MARKER. APPEARS ON CLICK */
 
 #infoWindowContent {
   padding: 12px;
