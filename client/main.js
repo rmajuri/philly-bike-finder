@@ -202,6 +202,7 @@ $(document).ready(function() {
         console.log(results)
         //Takes first four stations from array of ascending distance-from-user values.
         const closestFour = sortedAscending.slice(0, 4)
+        emptyStationInfoColumn()
         createMapInfoColumn(closestFour)
         createUserLocationMarker(inputAddressCoords, results[0])
         getDataForMarkers(closestFour)
@@ -217,6 +218,10 @@ $(document).ready(function() {
     }
   }
 
+  function emptyStationInfoColumn() {
+    $(`#mapInfoColumn`).empty()
+  }
+
   function createStationInfoBlock(station, stationNum) {
     const stationInfoBlock = `<div class='stationInfoBlock block${stationNum}'>
       <h3>${station.properties.name}</h3>
@@ -230,7 +235,7 @@ $(document).ready(function() {
       <p class='expandInfo${stationNum}'>See More</p>
     </div>`
     $('#mapInfoColumn').append(stationInfoBlock)
-    $(document).on('click', `.expandInfo${stationNum}`, function() {
+    $(`.block${stationNum}`).on('click', `.expandInfo${stationNum}`, function() {
       const num = stationNum
       handleExpansionButtonClick(num)
     })

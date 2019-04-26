@@ -214,6 +214,8 @@ body {
   align-items: center;
   padding: 15px 5px;
   margin-bottom: 30px;
+  height: 500px;
+  overflow: auto;
 }
 
 .stationInfoBlock {
