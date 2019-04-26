@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Philly Bike Pulse</title>
+    <title>Indego Bike Pulse</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="./style.css" />
     <link
@@ -15,18 +15,23 @@
   <body>
     <header class="headerBar">
       <div class="brandHeadingContainer">
-        <h1 class="brandName">Philly Bike Pulse</h1>
+        <h1 class="brandName">Indego Bike Pulse</h1>
         <h4 class="valueProposition">
           Your reference for Philadelphia bike share station updates.
         </h4>
       </div>
       <div class="weatherContainer">
         <div class="currentWeatherContainer">
-          <h3 class="currentWeather">Current Weather:</h3>
-          <h3 id="degreesFahrenheit"></h3>
-          <span class="fahrenheit">°F</span>
+          <div class="weatherColumn">
+            <div class="weatherRow">
+              <h3 class="currentWeather">Current Weather:</h3>
+              <h3 id="degreesFahrenheit"></h3>
+              <span class="fahrenheit">°F</span>
+            </div>
+            <h4 id="weatherDescription"></h4>
+          </div>
+          <canvas id="icon"></canvas>
         </div>
-        <h4 id="weatherDescription"></h4>
       </div>
     </header>
     <div class="mainContentContainer">
@@ -45,7 +50,6 @@
         </div>
       </div>
     </div>
-    <script src="./bundle.js"></script>
     <script>
       //variables that store references to Google Map and Google Places Service
       let map
@@ -92,5 +96,7 @@
       defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFrj1ZaSsqGSg4q3DbmORS9uQ0Bq46rRE&callback=initMap&libraries=places"
     ></script>
+    <script src="./bundle.js"></script>
+    <script src="skycons.js"></script>
   </body>
 </html>

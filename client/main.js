@@ -10,13 +10,14 @@ $(document).ready(function() {
 
     const temperatureData = parseInt(dataResponse.temp, 10)
     const weatherDescriptionData = res.weather[0].description
+    const weatherSummaryForChoosingIcon = res.weather[0].main.toLowerCase()
     const windSpeedData = parseInt(res.wind.windSpeed, 10)
 
     //Determine whether app shows weather warning. Appears just below header. Dangerous condition
     //determined by extreme cold/heat or high winds
     function determineWeatherWarning(temperature, wind) {
       let warningMessage
-      let weatherWarning = $('#weatherWarning')
+      let $weatherWarning = $('#weatherWarning')
 
       if (temperature > 98) {
         warningMessage = 'Warning: temperatures exceeding 98°F! Stay cool!'
@@ -27,7 +28,37 @@ $(document).ready(function() {
       }
 
       if (warningMessage) {
-        weatherWarning.text(warningMessage)
+        $weatherWarning.text(warningMessage)
+      }
+    }
+
+    function setIcon(weather) {
+      const icon = new Skycons({
+        color: '#25c3f7'
+      })
+      const iconCanvas = document.getElementById('icon')
+      const hours = new Date().getHours()
+      let iconId
+
+      if (weather === 'rain' || weather === 'drizzle' || weather === 'thunderstorm') {
+        iconId = Skycons.RAIN
+      } else if (weather === 'clear' && hours > 7 && hours < 18) {
+        iconId = Skycons.CLEAR_DAY
+      } else if (weather === 'clear' && hours <= 7 || hours >= 18) {
+        iconId = Skycons.CLEAR_NIGHT
+      } else if (weather === 'clouds') {
+        iconId = Skycons.CLOUDY
+      } else if (weather === 'snow') {
+        iconId = Skycons.SNOW
+      } else if (weather === 'fog' || weather === 'haze') {
+        iconId = Skycons.FOG
+      } else if (weather === 'squall' || weather === 'tornado') {
+        iconId = Skycons.WIND
+      }
+
+      if (iconId) {
+        icon.add(iconCanvas, iconId)
+        icon.play()
       }
     }
 
@@ -41,6 +72,7 @@ $(document).ready(function() {
 
     determineWeatherWarning(temperatureData, windSpeedData)
     setWeatherInfo(temperatureData, weatherDescriptionData)
+    setIcon(weatherSummaryForChoosingIcon)
 
     console.log(res)
   })
@@ -211,6 +243,7 @@ $(document).ready(function() {
         <h5 class='inactive extraInfo${stationNum}'><span>Trikes available:</span>${station.properties.trikesAvailable}</h5>
         <p class='expandButton expandInfo${stationNum}'>See More</p>
       </div>`
+
       $('#mapInfoColumn').append(stationInfoBlock)
       $('#mapInfoColumn').on('click', `.infoBlockName${stationNum}`, function() {
         centerMapAndZoomOnSelectedStation([station.properties.latitude, station.properties.longitude])

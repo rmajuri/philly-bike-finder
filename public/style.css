@@ -13,13 +13,15 @@ body {
 .headerBar {
   display: flex;
   width: 100%;
-  margin-bottom: 25px;
-  align-items: center;
+  margin-bottom: 20px;
+  /* align-items: center; */
   justify-content: space-between;
+  align-items: center;
 }
 
 .brandHeadingContainer {
-  padding: 15px 0 0 15px;
+  /* padding: 15px 0 0 15px; */
+  padding-left: 15px;
 }
 
 .brandName {
@@ -39,16 +41,18 @@ body {
 }
 
 .weatherContainer {
-  padding: 15px 15px 0 0;
+  /* padding: 15px 15px 0 0; */
+  /* padding-right: 10px; */
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .currentWeatherContainer {
   display: flex;
-  flex-direction: row;
   margin-bottom: 5px;
+  /* align-content: center; */
+  align-items: center;
 }
 
 .currentWeather {
@@ -71,12 +75,34 @@ body {
   letter-spacing: 0.1rem;
 }
 
+#icon {
+  height: 90px;
+  width: 90px;
+  padding: 10px 10px 10px 0;
+}
+
 #weatherDescription {
   font-family: 'Josefin Sans', sans-serif;
   text-transform: uppercase;
   color: #25f7c2;
   letter-spacing: 0.2rem;
   font-weight: 500;
+}
+
+.weatherColumn {
+  display: flex;
+  flex-direction: column;
+  /* align-self: center; */
+  align-content: space-between;
+}
+
+.weatherColumn h4 {
+  padding-top: 8px;
+}
+
+.weatherRow {
+  display: flex;
+  /* margin-bottom: 5px; */
 }
 
 /* MAIN BODY CONTENT STYLES*/
