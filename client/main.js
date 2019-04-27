@@ -7,7 +7,6 @@ $(document).ready(function() {
   $.getJSON('/weather-api', function(res) {
     //res.main contains current temp, humidity, temp_min, and temp_max
     const dataResponse = res.main
-
     const temperatureData = parseInt(dataResponse.temp, 10)
     const weatherDescriptionData = res.weather[0].description
     const weatherSummaryForChoosingIcon = res.weather[0].main.toLowerCase()

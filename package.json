@@ -6,7 +6,8 @@
   "scripts": {
     "heroku-postbuild": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/app.js"
+    "start:dev": "NODE_ENV='development' webpack -w & nodemon server/app.js",
+    "start": "npm run start:dev"
   },
   "repository": {
     "type": "git",
