@@ -28,6 +28,7 @@
     "request-promise": "^4.2.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.4",
     "babel-loader": "^8.0.5",
     "nodemon": "^1.18.11",
     "webpack": "^4.30.0",
