@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "deploy": "script/deploy",
+    "heroku-token": "script/encrypt-heroku-auth-token",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "NODE_ENV='development' webpack -w & nodemon server/server.js",
     "start": "npm run start:dev"
