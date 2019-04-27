@@ -1,5 +1,3 @@
-import '@babel/polyfill'
-
 $(document).ready(function() {
   let markers = []
   let infoWindows = {}

@@ -5,7 +5,6 @@
   "main": "main.js",
   "scripts": {
     "deploy": "script/deploy",
-    "heroku-token": "script/encrypt-heroku-auth-token",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "NODE_ENV='development' webpack -w & nodemon server/server.js",
     "start": "npm run start:dev"
@@ -29,6 +28,7 @@
     "request-promise": "^4.2.4"
   },
   "devDependencies": {
+    "babel-loader": "^8.0.5",
     "nodemon": "^1.18.11",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1"
