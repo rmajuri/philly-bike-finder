@@ -31,6 +31,7 @@ $(document).ready(function() {
       }
     }
 
+    //Set the Skycon based on the main weather description
     function setIcon(weather) {
       const icon = new Skycons({
         color: '#25c3f7'
@@ -55,6 +56,8 @@ $(document).ready(function() {
         iconId = Skycons.WIND
       }
 
+      //In the case of unusual weather conditions (e.g., Ash, Smoke, etc.),
+      //add no Skycon and adjust padding in header
       if (iconId) {
         icon.add(iconCanvas, iconId)
         icon.play()
