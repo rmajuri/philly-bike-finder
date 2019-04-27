@@ -55,6 +55,26 @@ body {
   align-items: center;
 }
 
+.weatherColumn {
+  display: flex;
+  flex-direction: column;
+  /* align-self: center; */
+  align-content: space-between;
+}
+
+.weatherColumn h4 {
+  padding-top: 8px;
+}
+
+.weatherRow {
+  display: flex;
+  /* margin-bottom: 5px; */
+}
+
+.fallbackPadding {
+  padding-right: 15px;
+}
+
 .currentWeather {
   font-family: 'Josefin Sans', sans-serif;
   color: #f75925;
@@ -87,22 +107,6 @@ body {
   color: #25f7c2;
   letter-spacing: 0.2rem;
   font-weight: 500;
-}
-
-.weatherColumn {
-  display: flex;
-  flex-direction: column;
-  /* align-self: center; */
-  align-content: space-between;
-}
-
-.weatherColumn h4 {
-  padding-top: 8px;
-}
-
-.weatherRow {
-  display: flex;
-  /* margin-bottom: 5px; */
 }
 
 /* MAIN BODY CONTENT STYLES*/

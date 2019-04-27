@@ -59,6 +59,9 @@ $(document).ready(function() {
       if (iconId) {
         icon.add(iconCanvas, iconId)
         icon.play()
+      } else {
+        $('#icon').remove()
+        $('.currentWeatherContainer').addClass('fallbackPadding')
       }
     }
 
