@@ -1,4 +1,4 @@
-## Rob Majuri - Frontend Challenge Submission
+# Rob Majuri - Frontend Challenge Submission
 
 This app is deployed at http://indegobikepulse.herokuapp.com/.
 
@@ -42,7 +42,7 @@ With more time, here are some things I'd like to add or improve, apart from the 
 * Offer directions to a station that a user selects
 * Style map and autocomplete suggestion typeface for consistency with app aesthetics
 
-# Learned
+## Learned
 
 * Next time I deploy, create a separate branch for deployment
 * By referencing the P'unk Avenue JavaScript style guide, I learned a lot about best practice,particularly in the following areas: avoiding variable littering, where to attach event handlers, and cross-platform availablity of code features.
