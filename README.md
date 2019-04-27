@@ -15,8 +15,11 @@ To run the app locally:
 ## Technologies Used
 
 **Frontend:** JavaScript, jQuery, HTML, CSS
+
 **Frontend Integrations:** Skycons, Google Maps, Google Places
+
 **Backend:** Express, Request-Promise, axios
+
 **Config:** Webpack, Babel, dotenv
 
 ## Project Features
