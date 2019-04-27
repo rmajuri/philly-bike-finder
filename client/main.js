@@ -4,7 +4,7 @@ $(document).ready(function() {
   let stationData
 
   //handle weather data
-  $.getJSON(`/weather-api`, function(res) {
+  $.getJSON('/weather-api', function(res) {
     //res.main contains current temp, humidity, temp_min, and temp_max
     const dataResponse = res.main
 
@@ -76,13 +76,10 @@ $(document).ready(function() {
     determineWeatherWarning(temperatureData, windSpeedData)
     setWeatherInfo(temperatureData, weatherDescriptionData)
     setIcon(weatherSummaryForChoosingIcon)
-
-    console.log(res)
   })
 
-  $.getJSON(`/indego-api`, function(res) {
+  $.getJSON('/indego-api', function(res) {
     stationData = res
-    console.log('ORIGINAL STATION DATA', stationData)
 
     //Display all stations on map and in scroll window
     function populateMapInitially() {
@@ -230,7 +227,7 @@ $(document).ready(function() {
 
     //clears scroll window before repopulating
     function emptyStationInfoColumn() {
-      $(`#mapInfoColumn`).empty()
+      $('#mapInfoColumn').empty()
     }
 
     //Appends a station info block to the scroll window
@@ -259,7 +256,7 @@ $(document).ready(function() {
 
     //fires when 'See Less' and 'See More' buttons on info block are clicked
     function handleExpansionButtonClick(stationNum) {
-      console.log('hey')
+
       if ($(`.extraInfo${stationNum}`).hasClass('inactive')) {
         $(`.extraInfo${stationNum}`).removeClass('inactive')
         $(`.expandInfo${stationNum}`).text('See Less')
@@ -298,8 +295,6 @@ $(document).ready(function() {
           stationData
         )
         const sortedAscending = sortDistancesAscending(withDistances)
-        console.log('TRANSFORMED STATION DATA', sortedAscending)
-        console.log(results[0].geometry.location.lat(), results[0].geometry.location.lng())
         //Takes first four stations from array of ascending distance-from-user values.
         const closestFour = sortedAscending.slice(0, 4)
         emptyStationInfoColumn()

@@ -14,13 +14,11 @@ body {
   display: flex;
   width: 100%;
   margin-bottom: 20px;
-  /* align-items: center; */
   justify-content: space-between;
   align-items: center;
 }
 
 .brandHeadingContainer {
-  /* padding: 15px 0 0 15px; */
   padding-left: 15px;
 }
 
@@ -41,24 +39,19 @@ body {
 }
 
 .weatherContainer {
-  /* padding: 15px 15px 0 0; */
-  /* padding-right: 10px; */
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
 }
 
 .currentWeatherContainer {
   display: flex;
   margin-bottom: 5px;
-  /* align-content: center; */
   align-items: center;
 }
 
 .weatherColumn {
   display: flex;
   flex-direction: column;
-  /* align-self: center; */
   align-content: space-between;
 }
 
@@ -68,7 +61,6 @@ body {
 
 .weatherRow {
   display: flex;
-  /* margin-bottom: 5px; */
 }
 
 .fallbackPadding {
