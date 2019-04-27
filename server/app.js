@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/weather-api', require('./weather-api'))
 app.use('/indego-api', require('./indego-api'))
 
-app.use(express.static(path.join(__dirname, '..', 'html')))
+app.use(express.static(path.join(__dirname, '..', 'public')))
 
 app.use(function(req, res, next) {
   const err = new Error('Not Found')
