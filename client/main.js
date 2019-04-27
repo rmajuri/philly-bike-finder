@@ -22,8 +22,8 @@ $(document).ready(function() {
         warningMessage = 'Warning: temperatures exceeding 98°F! Stay cool!'
       } else if (temperature < 32) {
         warningMessage = 'Warning: temperatures below 32°F! Roads may be icy!'
-      } else if (wind > 35) {
-        warningMessage = 'Warning: wind speeds exceeding 35 mph!'
+      } else if (wind > 15) {
+        warningMessage = 'Warning: high winds!'
       }
 
       if (warningMessage) {
