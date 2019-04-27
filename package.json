@@ -4,6 +4,7 @@
   "description": "P'unk Avenue frontend node.js challenge",
   "main": "main.js",
   "scripts": {
+    "deploy": "script/deploy",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "NODE_ENV='development' webpack -w & nodemon server/server.js",
     "start": "npm run start:dev"
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/punkave/frontend-challenge#readme",
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
     "axios": "^0.18.0",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
