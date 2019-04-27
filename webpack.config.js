@@ -5,7 +5,6 @@ module.exports = {
     entry: [
       '@babel/polyfill',
       './client/main.js',
-      './public/skycons.js'
     ],
     output: {
       path: __dirname,
