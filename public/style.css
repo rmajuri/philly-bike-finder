@@ -6,6 +6,9 @@
 
 body {
   background-color: rgb(250, 252, 253);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 /* HEADER BAR STYLES */
@@ -108,6 +111,7 @@ body {
   flex-direction: column;
   align-items: center;
   height: 100%;
+  width: 100%;
 }
 
 /* SHAKE ANIMATION FOR WHEN DANGEROUS WEATHER WARNING APPEARS */
@@ -369,3 +373,111 @@ body {
   margin-right: 5px;
   font-weight: 300;
 }
+
+@media only screen and (max-width: 600px) {
+
+  .mainContentContainer {
+    width: 90%;
+    align-self: center;
+  }
+
+  .currentWeather {
+    font-size: .9rem;
+  }
+  
+  #degreesFahrenheit {
+    font-size: .9rem;
+  }
+  
+  .fahrenheit {
+    font-size: .9rem;
+  }
+  
+  #icon {
+    height: 70px;
+    width: 100px;
+    padding: 10px 10px 10px 0;
+  }
+  
+  #weatherDescription {
+    font-size: .9rem;
+  }
+  
+  .currentWeatherContainer {
+    align-self: flex-start;
+    margin-top: 15px;
+  }
+
+  .headerBar {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+
+  .brandName {
+    font-size: 2rem;
+    padding-top: 15px;
+    margin-bottom: 12px;
+  }
+
+  .valueProposition {
+    font-size: .8rem;
+    line-height: 1rem;
+    width: 80%;
+  }
+
+  .serviceDescription {
+    text-align: center;
+    width: 98%;
+    line-height: 1.5rem;
+    font-size: 1.1rem;
+    margin-bottom: 18px;
+  }
+
+  .inputDialogue {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+  }
+
+  #inputForm {
+    width: 70%;
+  }
+
+  .mapInfoContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #map {
+    height: 400px;
+    width: 350px;
+  }
+
+  .inputContainer {
+    display: flex;
+    width: 100%;
+    padding: 0;
+  }
+
+  #mapInfoColumn {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgb(226, 240, 253);
+    border: 1px solid rgb(245, 243, 243);
+    align-items: center;
+    padding: 15px 5px;
+    margin-bottom: 30px;
+    height: 500px;
+    overflow: auto;
+  }
+
+
+
+
+}    
+
+/* MEDIA QUERY FOR IPHONE 5 SE */
+/* @media screen and (device-aspect-ratio: 40/71) {
+
+
+} */
