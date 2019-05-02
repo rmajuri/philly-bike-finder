@@ -263,7 +263,7 @@ body {
 }
 
 .stationInfoBlock h3 {
-  color:  #f75925;
+  color: #f75925;
   display: inline;
   font-family: 'Josefin Sans', sans-serif;
   letter-spacing: 0.2rem;
@@ -282,7 +282,7 @@ body {
 }
 
 .stationInfoBlock h6 {
-  color:  #f75925;
+  color: #f75925;
   font-family: 'Josefin Sans', sans-serif;
   letter-spacing: 0.2rem;
   margin: 15px 0;
@@ -291,7 +291,7 @@ body {
 }
 
 .stationInfoBlock h5 {
-  color:  #25c3f7;
+  color: #25c3f7;
   font-family: 'Josefin Sans', sans-serif;
   letter-spacing: 0.2rem;
   margin: 8px 0;
@@ -375,34 +375,33 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
-
   .mainContentContainer {
     width: 90%;
     align-self: center;
   }
 
   .currentWeather {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
-  
+
   #degreesFahrenheit {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
-  
+
   .fahrenheit {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
-  
+
   #icon {
     height: 70px;
     width: 100px;
     padding: 10px 10px 10px 0;
   }
-  
+
   #weatherDescription {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
-  
+
   .currentWeatherContainer {
     align-self: flex-start;
     margin-top: 15px;
@@ -420,7 +419,7 @@ body {
   }
 
   .valueProposition {
-    font-size: .8rem;
+    font-size: 0.8rem;
     line-height: 1rem;
     width: 80%;
   }
@@ -470,11 +469,7 @@ body {
     height: 500px;
     overflow: auto;
   }
-
-
-
-
-}    
+}
 
 /* MEDIA QUERY FOR IPHONE 5 SE */
 /* @media screen and (device-aspect-ratio: 40/71) {
