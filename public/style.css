@@ -438,7 +438,7 @@ body {
   }
 
   #inputForm {
-    width: 70%;
+    width: 80%;
   }
 
   .mapInfoContainer {
@@ -460,7 +460,7 @@ body {
   #mapInfoColumn {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
     background-color: rgb(226, 240, 253);
     border: 1px solid rgb(245, 243, 243);
     align-items: center;
@@ -469,6 +469,43 @@ body {
     height: 500px;
     overflow: auto;
   }
+
+  #stationAddress {
+    font-size: .8rem;
+  }
+
+  #stationLocationName {
+    font-size: .7rem;
+  }
+
+  .infoBodyDetail {
+     font-size: .7rem;
+  }
+  
+  .boldInfoBodyDetail {
+    font-size: .7rem;
+  }
+  
+  .lightInfoBodyDetail {
+    font-size: .7rem;
+  }
+
+  .stationInfoBlock h3 {
+    font-size: .8rem;
+    line-height: 1rem;
+  }
+
+  .stationInfoBlock p {
+    text-decoration: underline;
+    color: #f75925;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: 0.1rem;
+    font-weight: 400;
+    font-size: 0.65rem;
+    cursor: default;
+    text-transform: uppercase;
+  }
+  
 }
 
 @media screen and (device-aspect-ratio: 40/71) {
