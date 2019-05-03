@@ -381,7 +381,8 @@ body {
   }
 
   .currentWeather {
-    font-size: 0.9rem;
+    font-size: 1rem;
+
   }
 
   #degreesFahrenheit {
@@ -438,7 +439,7 @@ body {
   }
 
   #inputForm {
-    width: 80%;
+    width: 90%;
   }
 
   .mapInfoContainer {
@@ -504,6 +505,11 @@ body {
     font-size: 0.65rem;
     cursor: default;
     text-transform: uppercase;
+  }
+
+  .weatherContainer {
+    align-self: flex-start;
+    padding-left: 15px;
   }
   
 }
