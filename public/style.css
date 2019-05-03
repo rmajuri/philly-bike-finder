@@ -471,8 +471,13 @@ body {
   }
 }
 
-/* MEDIA QUERY FOR IPHONE 5 SE */
-/* @media screen and (device-aspect-ratio: 40/71) {
+@media screen and (device-aspect-ratio: 40/71) {
+  .valueProposition {
+    margin-bottom: 5px;
+  }
 
-
-} */
+  #map {
+    height: 400px;
+    width: 300px;
+  }
+}
