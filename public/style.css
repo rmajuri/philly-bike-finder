@@ -16,7 +16,7 @@ body {
 .headerBar {
   display: grid;
   width: 95%;
-  margin: 5px auto 3rem;
+  margin: 10px auto 3rem;
   grid-template-columns: 60% 1fr;
   align-items: center;
 }
@@ -50,7 +50,6 @@ body {
 .currentWeatherContainer {
   display: flex;
   justify-content: flex-end;
-  padding-top: 0.75rem;
 }
 
 .weatherColumn {
@@ -88,6 +87,7 @@ body {
   color: #25c3f7;
   letter-spacing: 0.2rem;
   font-weight: 500;
+  text-align: right;
 }
 
 /* MAIN BODY CONTENT STYLES*/
@@ -381,12 +381,7 @@ body {
   }
 
   .currentWeatherContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    padding-top: 0;
   }
 
-  #weatherDescription {
-    text-align: right;
-  }
 }
