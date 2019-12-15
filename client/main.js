@@ -9,7 +9,6 @@ $(document).ready(function() {
     const dataResponse = res.main
     const temperatureData = parseInt(dataResponse.temp, 10)
     const weatherDescriptionData = res.weather[0].description
-    const weatherSummaryForChoosingIcon = res.weather[0].main.toLowerCase()
     const windSpeedData = parseInt(res.wind.windSpeed, 10)
 
     //Determine whether app shows weather warning. Appears just below header. Dangerous condition
@@ -31,42 +30,6 @@ $(document).ready(function() {
       }
     }
 
-    //Set the Skycon based on the main weather description
-    function setIcon(weather) {
-      const icon = new Skycons({
-        color: '#25c3f7'
-      })
-      const iconCanvas = document.getElementById('icon')
-      const hours = new Date().getHours()
-      let iconId
-
-      if (weather === 'rain' || weather === 'drizzle' || weather === 'thunderstorm') {
-        iconId = Skycons.RAIN
-      } else if (weather === 'clear' && hours > 7 && hours < 18) {
-        iconId = Skycons.CLEAR_DAY
-      } else if (weather === 'clear' && hours <= 7 || hours >= 18) {
-        iconId = Skycons.CLEAR_NIGHT
-      } else if (weather === 'clouds') {
-        iconId = Skycons.CLOUDY
-      } else if (weather === 'snow') {
-        iconId = Skycons.SNOW
-      } else if (weather === 'fog' || weather === 'haze') {
-        iconId = Skycons.FOG
-      } else if (weather === 'squall' || weather === 'tornado') {
-        iconId = Skycons.WIND
-      }
-
-      //In the case of unusual weather conditions (e.g., Ash, Smoke, etc.),
-      //add no Skycon and adjust padding in header
-      if (iconId) {
-        icon.add(iconCanvas, iconId)
-        icon.play()
-      } else {
-        $('#icon').remove()
-        $('.currentWeatherContainer').addClass('fallbackPadding')
-      }
-    }
-
     //Display weather info in header.
     function setWeatherInfo(temperature, description) {
       const $temperatureComponent = $('#degreesFahrenheit')
@@ -77,7 +40,6 @@ $(document).ready(function() {
 
     determineWeatherWarning(temperatureData, windSpeedData)
     setWeatherInfo(temperatureData, weatherDescriptionData)
-    setIcon(weatherSummaryForChoosingIcon)
   })
 
   $.getJSON('/indego-api', function(res) {

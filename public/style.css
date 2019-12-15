@@ -197,6 +197,7 @@ body {
 .addressSubmission:hover {
   background-color: #25c3f7;
   color: rgb(250, 252, 253);
+  cursor: pointer;
 }
 
 .addressSubmission:focus {
@@ -263,6 +264,7 @@ body {
 
 .stationInfoBlock h3:hover {
   color: #25f7c2;
+  cursor: pointer;
 }
 
 .stationInfoBlock h3:active {
@@ -304,6 +306,7 @@ body {
 
 .stationInfoBlock p:hover {
   color: #25f7c2;
+  cursor: pointer;
 }
 
 .stationInfoBlock p:active {
