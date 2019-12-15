@@ -14,44 +14,47 @@
     />
   </head>
   <body>
+
     <header class="headerBar">
       <div class="brandHeadingContainer">
-        <h1 class="brandName">Indego Bike Pulse</h1>
-        <h4 class="valueProposition">
-          Your reference for Philadelphia bike share station updates.
-        </h4>
+        <h1 class="brandName">Philly Bike Finder</h1>
       </div>
+
       <div class="weatherContainer">
         <div class="currentWeatherContainer">
           <div class="weatherColumn">
             <div class="weatherRow">
-              <h3 class="currentWeather">Current Weather:</h3>
               <h3 id="degreesFahrenheit"></h3>
               <span class="fahrenheit">°F</span>
             </div>
-            <h4 id="weatherDescription"></h4>
+            <h3 id="weatherDescription"></h3>
           </div>
-          <canvas id="icon"></canvas>
         </div>
       </div>
     </header>
+
     <div class="mainContentContainer">
+      
         <h1 id="weatherWarning"></h1>
+
       <div class="inputContainer">
         <h2 class="serviceDescription">Find available bikes and parking docks near you.</h2>
         <h2 class="inputDialogue">Where are you?</h2>
         <form id="inputForm">
         <input id="addressInput" type="text" name="current-address" />
-        <button class="addressSubmission type="submit">Submit</button>
+        <button class="addressSubmission" type="submit">Submit</button>
         </form>
       </div>
+
       <div class="mapInfoContainer">
         <div id="map"></div>
         <div id="mapInfoColumn">
         </div>
       </div>
     </div>
-    <script defer src="./skycons.js"></script>
+
+    <footer id="footer">Made with &#128276 by <a href="https://www.robertmajuri.com/" target="blank">Rob Majuri</a></footer>
+    
     <script>
       //variables that store references to Google Map and Google Places Service
       let map

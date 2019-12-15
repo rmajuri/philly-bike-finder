@@ -3,7 +3,7 @@ const router = require('express').Router()
 const request = require('request-promise');
 
 const requestOptions = {
-  uri: process.env.INDEGO_API,
+  uri: 'https://www.rideindego.com/stations/json',
   json: true
 }
 
