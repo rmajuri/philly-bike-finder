@@ -4,7 +4,7 @@
   "description": "P'unk Avenue frontend node.js challenge",
   "main": "main.js",
   "scripts": {
-    "heroku-postbuild": "webpack -p",
+    "prod-build": "webpack -p",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build && node server/app.js"
