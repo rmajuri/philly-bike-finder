@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  
   let markers = []
   let infoWindows = {}
   let stationData
