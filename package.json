@@ -1,7 +1,7 @@
 {
   "name": "philly-bike-share",
   "version": "1.0.0",
-  "description": "P'unk Avenue frontend node.js challenge",
+  "description": "Find bikes available through Philadelphia's social bike sharing program.",
   "main": "main.js",
   "scripts": {
     "build": "webpack",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/punkave/frontend-challenge.git"
+    "url": "git+https://github.com/rmajuri/philly-bike-finder.git"
   },
-  "author": "P'unk Avenue LLC",
+  "author": "Rob Majuri",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/punkave/frontend-challenge/issues"
+    "url": "https://github.com/rmajuri/philly-bike-finder/issues"
   },
-  "homepage": "https://github.com/punkave/frontend-challenge#readme",
+  "homepage": "https://github.com/rmajuri/philly-bike-finder",
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
     "axios": "^0.18.1",
