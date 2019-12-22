@@ -4,9 +4,9 @@
   "description": "Find bikes available through Philadelphia's social bike sharing program.",
   "main": "main.js",
   "scripts": {
-    "build": "webpack",
+    "heroku-postbuild": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build && node server/app.js"
+    "start": "node server/app.js"
   },
   "repository": {
     "type": "git",
