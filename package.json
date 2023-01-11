@@ -2,8 +2,7 @@
   "name": "philly-bike-share",
   "description": "Find bikes available through Philadelphia's social bike sharing program.",
   "scripts": {
-    "start": "node server/app.js",
-    "build": "webpack"
+    "start": "node server/app.js"
   },
   "repository": {
     "type": "git",
