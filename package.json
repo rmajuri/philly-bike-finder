@@ -1,10 +1,7 @@
 {
   "name": "philly-bike-share",
-  "version": "1.0.0",
   "description": "Find bikes available through Philadelphia's social bike sharing program.",
-  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/app.js",
     "build": "webpack"
   },
