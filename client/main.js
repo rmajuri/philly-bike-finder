@@ -43,19 +43,35 @@ $(document).ready(function() {
     setWeatherInfo(temperatureData, weatherDescriptionData)
   })
 
-  $.getJSON('/indego-api', function(res) {
-    stationData = res
+  fetchInitialMapData()
 
-    //Display all stations on map and in scroll window
-    function populateMapInitially() {
-      createStationMarkers(stationData)
-      placeMarkersOnMap(map)
-      createMapInfoColumn(stationData)
-    }
+  function fetchInitialMapData() {
+    let $loadingState = $('.loadingState')
+    let $loadingStateRing = $('.lds-ring')
+    let $loadingStateMessage = $('.loadingStateMessage')
+    $loadingStateMessage.text('Loading bike stations...')
 
-    populateMapInitially()
+    $.getJSON('/indego-api', function(res) {
+      stationData = res
 
-  })
+      //Display all stations on map and in scroll window
+      function populateMapInitially() {
+        createStationMarkers(stationData)
+        placeMarkersOnMap(map)
+        createMapInfoColumn(stationData)
+      }
+
+      populateMapInitially()
+    })
+    .done(function() {
+      $loadingState.hide()
+      $loadingStateRing.hide()
+    })
+    .fail(function() {
+      $loadingStateRing.hide()
+      $loadingStateMessage.text('Oops! Something went wrong while fetching bike stations!')
+    })
+  }
 
   //take in user's location coords and finds the distance between user and all stations. Stores this distance
   //in a copy of station object that now includes distanceFromUserAddress property
